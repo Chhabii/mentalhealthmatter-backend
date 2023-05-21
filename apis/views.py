@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Conversation
 from django.http import JsonResponse
 import os
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "sk-"
 
 
 
