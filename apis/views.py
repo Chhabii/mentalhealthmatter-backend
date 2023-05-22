@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Conversation
 from django.http import JsonResponse
 import os
-os.environ["OPENAI_API_KEY"] = "sk-"
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 
@@ -80,7 +80,7 @@ def recommend(request):
     recom = chain({"question": query})
     print(recom['result'])
 
-    return HttpResponse(recom['result'])
+    return JsonResponse({"recommend":recom['result']},status=200)
 
 
 

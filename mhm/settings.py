@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -41,7 +42,7 @@ ROOT_URLCONF = "mhm.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR,"../frontend/build")],
+        "DIRS": [os.path.join(BASE_DIR,"../MHM_f/build")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -98,7 +99,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"../frontend/build/static")
+    os.path.join(BASE_DIR,"../MHM_f/build/static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
