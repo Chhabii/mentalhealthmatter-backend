@@ -2,10 +2,11 @@ import pandas as pd
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Conversation
+from .models import Conversation, Blog
 from django.http import JsonResponse
 import os
-os.environ["OPENAI_API_KEY"] = "sk-"
+from .serializers import BlogSerializer
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 
@@ -48,11 +49,11 @@ from langchain.llms import OpenAI
 
 path_to_csv = os.path.join(os.getcwd(), 'reco.csv')
 
-loader = CSVLoader(file_path=path_to_csv)
+# loader = CSVLoader(file_path=path_to_csv)
 
-index_creator = VectorstoreIndexCreator()
-docsearch = index_creator.from_loaders([loader])
-chain = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=docsearch.vectorstore.as_retriever(), input_key="question")
+# index_creator = VectorstoreIndexCreator()
+# docsearch = index_creator.from_loaders([loader])
+# chain = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=docsearch.vectorstore.as_retriever(), input_key="question")
 
 from apis.models import Conversation
 
@@ -69,18 +70,18 @@ def recommend(request):
 
     user_msg = convers
     
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
-                                            messages=[{"role": "system", "content": system_msg},
-                                            {"role": "user", "content": user_msg}])
+    # response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
+                                            # messages=[{"role": "system", "content": system_msg},
+                                            # {"role": "user", "content": user_msg}])
     
     #return the recommendation
     stress_level = "high"
     
-    query = "These are the: " + response.choices[0]["message"]["content"] + " .And Stress Levels Treatedis "+ stress_level + " .Recommend the psyciatrist If you can't find the exact, just recommend the nearest one. 'I recommend you to visit Dr. XYZ, he is a good doctor."
-    recom = chain({"question": query})
-    print(recom['result'])
+    # query = "These are the: " + response.choices[0]["message"]["content"] + " .And Stress Levels Treatedis "+ stress_level + " .Recommend the psyciatrist If you can't find the exact, just recommend the nearest one. 'I recommend you to visit Dr. XYZ, he is a good doctor."
+    # recom = chain({"question": query})
+    # print(recom['result'])
 
-    return JsonResponse({"recommend":recom['result']},status=200)
+    # return JsonResponse({"recommend":recom['result']},status=200)
 
 
 
@@ -117,4 +118,70 @@ def doctorai(request):
     response = conversation.predict(input=user_input)
     Conversation.objects.create(user_message=user_input, bot_response=response)
     return JsonResponse({"message": response}, status=200)
+
+
+
+############ BLOG ###############3
+@api_view(['GET'])
+def apiOverview(request):
+    api_urls = {
+        'List':'/blog-list/',
+        'Detail view': '/blog-detail/<str:pk>/',
+        'Create': '/blog-create/',
+        'Update': '/blog-update/<str:pk>',
+        'Delete': '/blog-delete/<str:pk>',
+    }
+
+    return Response(api_urls)
+
+@api_view(['GET'])
+def blogList(request):
+    blogs = Blog.objects.all()
+    serializer = BlogSerializer(blogs, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def blogDetail(request, pk):
+    try:
+        blogs = Blog.objects.get(id=pk)
+    except Blog.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = BlogSerializer(blogs, many=False)
+
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def blogCreate(request):
+    
+    serializer = BlogSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def blogUpdate(request, pk):
+    try:
+        blog = Blog.objects.get(id=pk)
+    except Blog.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = BlogSerializer(instance=blog, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+def blogDelete(request, pk):
+    try:
+        blog = Blog.objects.get(id=pk)
+    except Blog.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    blog.delete()
+    return Response("Blog successfully deleted!!!")
+
 
