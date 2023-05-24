@@ -6,7 +6,7 @@ from .models import Conversation, Blog
 from django.http import JsonResponse
 import os
 from .serializers import BlogSerializer
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 
@@ -49,11 +49,11 @@ from langchain.llms import OpenAI
 
 path_to_csv = os.path.join(os.getcwd(), 'reco.csv')
 
-# loader = CSVLoader(file_path=path_to_csv)
+loader = CSVLoader(file_path=path_to_csv)
 
-# index_creator = VectorstoreIndexCreator()
-# docsearch = index_creator.from_loaders([loader])
-# chain = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=docsearch.vectorstore.as_retriever(), input_key="question")
+index_creator = VectorstoreIndexCreator()
+docsearch = index_creator.from_loaders([loader])
+chain = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=docsearch.vectorstore.as_retriever(), input_key="question")
 
 from apis.models import Conversation
 
@@ -70,18 +70,18 @@ def recommend(request):
 
     user_msg = convers
     
-    # response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
-                                            # messages=[{"role": "system", "content": system_msg},
-                                            # {"role": "user", "content": user_msg}])
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
+                                            messages=[{"role": "system", "content": system_msg},
+                                            {"role": "user", "content": user_msg}])
     
     #return the recommendation
     stress_level = "high"
     
-    # query = "These are the: " + response.choices[0]["message"]["content"] + " .And Stress Levels Treatedis "+ stress_level + " .Recommend the psyciatrist If you can't find the exact, just recommend the nearest one. 'I recommend you to visit Dr. XYZ, he is a good doctor."
-    # recom = chain({"question": query})
-    # print(recom['result'])
+    query = "These are the: " + response.choices[0]["message"]["content"] + " .And Stress Levels Treatedis "+ stress_level + " .Recommend the psyciatrist If you can't find the exact, just recommend the nearest one. 'I recommend you to visit Dr. XYZ, he is a good doctor."
+    recom = chain({"question": query})
+    print(recom['result'])
 
-    # return JsonResponse({"recommend":recom['result']},status=200)
+    return JsonResponse({"recommend":recom['result']},status=200)
 
 
 
