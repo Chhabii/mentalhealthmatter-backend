@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "Blog",
+    
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"../MHM_f/build/static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+MEDIA_URL = "/media/"
+
+
+
 
 
 # Default primary key field type
