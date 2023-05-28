@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from .models import Blog
 
 
 class StressLevelInputSerializer(serializers.Serializer):
@@ -27,8 +26,3 @@ class StressLevelInputSerializer(serializers.Serializer):
     peer_pressure = serializers.IntegerField()
     extracurricular_activities = serializers.IntegerField()
     bullying = serializers.IntegerField()
-
-class BlogSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= Blog
-        fields = '__all__'

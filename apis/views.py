@@ -2,16 +2,22 @@ import pandas as pd
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Conversation, Blog
+from Blog.models import Blog
+
+from Blog.serializers import BlogSerializer
+from .models import Conversation
 from django.http import JsonResponse
 import os
-from .serializers import BlogSerializer
 from rest_framework import viewsets
 from django.shortcuts import render
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 
+
+class BlogView(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
 
 
 
@@ -21,9 +27,6 @@ from joblib import load
 model = load('stress_model.joblib')
 
 
-class BlogView(viewsets.ModelViewSet):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
 
 
 @api_view(['POST'])
@@ -127,69 +130,5 @@ def doctorai(request):
     Conversation.objects.create(user_message=user_input, bot_response=response)
     return JsonResponse({"message": response}, status=200)
 
-
-
-############ BLOG ###############3
-@api_view(['GET'])
-def apiOverview(request):
-    api_urls = {
-        'List':'/blog-list/',
-        'Detail view': '/blog-detail/<str:pk>/',
-        'Create': '/blog-create/',
-        'Update': '/blog-update/<str:pk>',
-        'Delete': '/blog-delete/<str:pk>',
-    }
-
-    return Response(api_urls)
-
-@api_view(['GET'])
-def blogList(request):
-    blogs = Blog.objects.all()
-    serializer = BlogSerializer(blogs, many=True)
-
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def blogDetail(request, pk):
-    try:
-        blogs = Blog.objects.get(id=pk)
-    except Blog.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    serializer = BlogSerializer(blogs, many=False)
-
-    return Response(serializer.data)
-
-@api_view(['POST'])
-def blogCreate(request):
-    
-    serializer = BlogSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-
-    return Response(serializer.data)
-
-@api_view(['POST'])
-def blogUpdate(request, pk):
-    try:
-        blog = Blog.objects.get(id=pk)
-    except Blog.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    serializer = BlogSerializer(instance=blog, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-
-    return Response(serializer.data)
-
-@api_view(['DELETE'])
-def blogDelete(request, pk):
-    try:
-        blog = Blog.objects.get(id=pk)
-    except Blog.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    blog.delete()
-    return Response("Blog successfully deleted!!!")
 
 
