@@ -10,6 +10,7 @@ class Conversation(models.Model):
 
 
 class Blog(models.Model):
+    image = models.ImageField(upload_to='uploads/images', null=True, blank=True)
     title = models.CharField(max_length=200)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

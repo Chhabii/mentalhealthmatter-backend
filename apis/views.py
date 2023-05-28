@@ -6,7 +6,9 @@ from .models import Conversation, Blog
 from django.http import JsonResponse
 import os
 from .serializers import BlogSerializer
-os.environ["OPENAI_API_KEY"] = "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"
+from rest_framework import viewsets
+from django.shortcuts import render
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 
@@ -17,6 +19,12 @@ from .serializers import StressLevelInputSerializer
 # Import your ML model
 from joblib import load
 model = load('stress_model.joblib')
+
+
+class BlogView(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
 
 @api_view(['POST'])
 def predict_stress_level(request):

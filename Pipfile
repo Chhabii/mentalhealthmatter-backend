@@ -8,15 +8,13 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 pandas = "*"
-numpy = "*"
-scikit-learn = "*"
 joblib = "*"
-langchain = "*"
+scikit-learn = "*"
 openai = "*"
-chromadb = "*"
+langchain = "*"
 tiktoken = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
