@@ -10,7 +10,7 @@ from django.http import JsonResponse
 import os
 from rest_framework import viewsets
 from django.shortcuts import render
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "sk-"
 
 
 
