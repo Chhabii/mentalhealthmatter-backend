@@ -22,10 +22,6 @@ class StressLevelInputSerializer(serializers.Serializer):
     teacher_student_relationship = serializers.IntegerField(min_value=1,max_value=5)
     future_career_concerns = serializers.IntegerField(min_value=1,max_value=5)
 
-    social_support = serializers.IntegerField()
-    peer_pressure = serializers.IntegerField()
-    extracurricular_activities = serializers.IntegerField()
-    bullying = serializers.In
     social_support = serializers.IntegerField(min_value=1,max_value=5)
     peer_pressure = serializers.IntegerField(min_value=1,max_value=5)
     extracurricular_activities = serializers.IntegerField(min_value=1,max_value=5)
