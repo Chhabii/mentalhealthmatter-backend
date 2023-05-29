@@ -15,10 +15,6 @@ os.environ["OPENAI_API_KEY"] = "sk-"
 
 
 
-class BlogView(viewsets.ModelViewSet):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
-
 
 
 from .serializers import StressLevelInputSerializer
