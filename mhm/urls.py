@@ -11,9 +11,12 @@ route = routers.DefaultRouter()
 route.register("",BlogView, basename='blogview')
 
 urlpatterns = [
+    path("", TemplateView.as_view(template_name="index.html")),
     path("admin/", admin.site.urls),
     path("apis/", include("apis.urls")),
+    path("accounts/", include("accounts.urls")),
     path("blog/", include("Blog.urls")),
     path("img/",include(route.urls)),
     path("", TemplateView.as_view(template_name="index.html")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
