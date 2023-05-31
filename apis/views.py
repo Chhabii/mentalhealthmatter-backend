@@ -2,9 +2,14 @@ import pandas as pd
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from Blog.models import Blog
+
+from Blog.serializers import BlogSerializer
 from .models import Conversation
 from django.http import JsonResponse
 import os
+from rest_framework import viewsets
+from django.shortcuts import render
 os.environ["OPENAI_API_KEY"] = "sk-"
 
 
@@ -16,6 +21,9 @@ from .serializers import StressLevelInputSerializer
 # Import your ML model
 from joblib import load
 model = load('stress_model.joblib')
+
+
+
 
 @api_view(['POST'])
 def predict_stress_level(request):
@@ -117,4 +125,6 @@ def doctorai(request):
     response = conversation.predict(input=user_input)
     Conversation.objects.create(user_message=user_input, bot_response=response)
     return JsonResponse({"message": response}, status=200)
+
+
 
