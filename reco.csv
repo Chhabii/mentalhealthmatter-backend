@@ -1,16 +1,36 @@
 Psychiatrist Name,Specialty,Symptoms Treated,Stress Levels Treated
-Dr. Amanda Johnson,"Anxiety Disorders","Panic attacks, excessive worrying, social anxiety",High
-"Dr. David Thompson",Depression and Mood Disorders,"Persistent sadness, loss of interest, changes in appetite",Low to Mid
-Dr. Sophia Lee,Post-Traumatic Stress Disorder (PTSD),"Flashbacks, nightmares, hypervigilance",High
-Dr. Michael Ramirez,Substance Abuse and Addiction,"Drug dependence, alcohol addiction, behavioral addictions","Mid to High"
-Dr. Sarah Collins,Eating Disorders,"Anorexia nervosa, bulimia nervosa, binge eating disorder",Low to Mid
-Dr. Jonathan Anderson,Attention Deficit Hyperactivity Disorder (ADHD),"Inattention, hyperactivity, impulsivity",Mid
-Dr. Emily Roberts,Bipolar Disorder,"Manic episodes, depressive episodes, mood swings",High
-Dr. Christopher Davis,Obsessive-Compulsive Disorder (OCD),"Intrusive thoughts, repetitive behaviors, excessive cleanliness",Low to Mid
-Dr. Olivia Moore,Schizophrenia,"Delusions, hallucinations, disorganized thinking",High
-Dr. Benjamin Thompson,Sleep Disorders," Insomnia, sleep apnea, narcolepsy",Low
-Dr. Samantha Lewis,Borderline Personality Disorder,"Unstable relationships, intense emotions, self-destructive behaviors",Mid to High  
-Dr. Matthew Collins,Trauma and Stressor-Related Disorders,"PTSD, acute stress reaction, adjustment disorders",High
-"Dr. Isabella Hernandez",Geriatric Psychiatry,"Memory problems, cognitive decline, mood disorders in older adults",Low to Mid
- Dr. Nathan Stewart,Autism Spectrum Disorders,"Social communication challenges, restricted interests, sensory sensitivities",Low
-Dr. Sophia Roberts,Child and Adolescent Psychiatry,"Behavioral issues, emotional difficulties, developmental disorders in children and teens",Mid to High
+Dr. Raman Koirala,"Anxiety Disorders","Panic attacks, excessive worrying, social anxiety",High
+Dr. Pawan Sharma,"Depression and Mood Disorders","Persistent sadness, loss of interest, changes in appetite",Low to Mid
+Dr. Sudarshan Narsing Pradhan,Post-Traumatic Stress Disorder (PTSD),"Flashbacks, nightmares, hypervigilance",High
+Dr. Rashmi Mishra,Substance Abuse and Addiction,"Drug dependence, alcohol addiction, behavioral addictions","Mid to High"
+Dr. Ananta Adhikari,Eating Disorders,"Anorexia nervosa, bulimia nervosa, binge eating disorder",Low to Mid
+Dr. Umakant Yadav,Attention Deficit Hyperactivity Disorder (ADHD),"Inattention, hyperactivity, impulsivity",Mid
+Dr. Saroj Ojha,Bipolar Disorder,"Manic episodes, depressive episodes, mood swings",High
+Dr. Surendra Sherchan,Obsessive-Compulsive Disorder (OCD),"Intrusive thoughts, repetitive behaviors, excessive cleanliness",Low to Mid
+Dr. Nirmal Lamichhane,Schizophrenia,"Delusions, hallucinations, disorganized thinking",High
+Dr. Kenison Shrestha,Sleep Disorders," Insomnia, sleep apnea, narcolepsy",Low
+Dr. Nidesh Sapkota,Borderline Personality Disorder,"Unstable relationships, intense emotions, self-destructive behaviors",Mid to High  
+Dr. Richa Amatya,Trauma and Stressor-Related Disorders,"PTSD, acute stress reaction, adjustment disorders",High
+Dr. Subodh Dahal,Geriatric Psychiatry,"Memory problems, cognitive decline, mood disorders in older adults",Low to Mid
+Dr. NDevesh Pradhan,Autism Spectrum Disorders,"Social communication challenges, restricted interests, sensory sensitivities",Low
+Dr. Reet Poudel,Child and Adolescent Psychiatry,"Behavioral issues, emotional difficulties, developmental disorders in children and teens",Mid to High
+Dr. Sujata Basnet,General Psychiatry,"Depression, anxiety disorders, bipolar disorder, schizophrenia",Mid
+Dr. Rajan Joshi,Child and Adolescent Psychiatry,"ADHD, behavioral problems, autism spectrum disorders, mood disorders in children and adolescents",Mid to High
+Dr. Manisha Thapa,Geriatric Psychiatry,"Dementia, memory disorders, depression in the elderly,Age-related stress, caregiving stress, loss and grief",Low to Mid
+Dr. Anil Sharma,Addiction Psychiatry,"Substance abuse, alcohol addiction, drug addiction, co-occurring mental health disorders",Mid to High
+Dr. Reena Shakya,Mood Disorders,"Major depressive disorder, bipolar disorder, cyclothymic disorder,Chronic stress, emotional instability, mood swings",High
+Dr. Roshan Khadka,Anxiety Disorders,"Generalized anxiety disorder, panic disorder, social anxiety disorder, phobias,High anxiety levels, excessive worry, panic attacks",Mid to High
+Dr. Pooja Sharma,Forensic Psychiatry,"Evaluation of mental competency, criminal responsibility, violence risk assessment,Trauma-related stress, legal proceedings stress, psychological impact of crime",Mid to High
+Dr. Niraj Gupta,Sleep Disorders,"Insomnia, sleep apnea, narcolepsy, restless leg syndrome",Low to Mid
+Dr. Deepak Koirala,Eating Disorders,"Anorexia nervosa, bulimia nervosa, binge eating disorder, body image issues",Low to Mid
+Dr. Sabina Lama,Trauma and PTSD,"Post-traumatic stress disorder, trauma-related anxiety, dissociative disorders",Mid to High
+
+
+
+
+
+
+
+
+
+
