@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "apis",
     "accounts",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -28,6 +29,17 @@ INSTALLED_APPS = [
     "Blog",
     
 ]
+
+# from custom_auth import CustomAuthentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -111,6 +123,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = "/media/"
 
 
+AUTH_USER_MODEL = "accounts.User"
 
 
 
