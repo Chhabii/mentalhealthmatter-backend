@@ -16,7 +16,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "apis",
+    "accounts",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,8 +26,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "Blog",
     
 ]
+
+# from custom_auth import CustomAuthentication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -103,6 +117,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"../MHM_f/build/static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+MEDIA_URL = "/media/"
+
+
+AUTH_USER_MODEL = "accounts.User"
+
 
 
 # Default primary key field type
