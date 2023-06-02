@@ -40,7 +40,7 @@ To get started with MHM, follow the steps
   ```
 2. Install all requirements
  ```bash
- pio install -r requirements.txt
+ pip install -r requirements.txt
  ```
 3. Start the server and you are good to go
 ```bash
