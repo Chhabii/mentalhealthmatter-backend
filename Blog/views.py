@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
 from .serializers import BlogSerializer
 from .models import Blog
 # Create your views here.
+from rest_framework.permissions import IsAuthenticated
 
 
 ############ BLOG ###############3
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def apiOverview(request):
     api_urls = {
         'List':'/blog/blog-list/',
@@ -21,6 +23,7 @@ def apiOverview(request):
     return Response(api_urls)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def blogList(request):
     blogs = Blog.objects.all()
     serializer = BlogSerializer(blogs, many=True)
@@ -28,6 +31,7 @@ def blogList(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def blogDetail(request, pk):
     try:
         blogs = Blog.objects.get(id=pk)
@@ -39,6 +43,7 @@ def blogDetail(request, pk):
     return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def blogCreate(request):
     
     serializer = BlogSerializer(data=request.data)
@@ -47,7 +52,8 @@ def blogCreate(request):
 
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
 def blogUpdate(request, pk):
     try:
         blog = Blog.objects.get(id=pk)
@@ -61,6 +67,7 @@ def blogUpdate(request, pk):
     return Response(serializer.data)
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def blogDelete(request, pk):
     try:
         blog = Blog.objects.get(id=pk)
